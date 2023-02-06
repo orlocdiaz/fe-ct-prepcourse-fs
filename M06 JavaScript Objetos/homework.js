@@ -37,7 +37,7 @@ function agregarPropiedad(objeto, propiedad) {
   // Retornar el objeto.
   // Tu código:
   objeto[propiedad] = null;
-  return(objeto)
+  return (objeto)
 }
 
 function invocarMetodo(objeto, metodo) {
@@ -45,8 +45,7 @@ function invocarMetodo(objeto, metodo) {
   // Esta propiedad contiene una función en su interior. Debes invocarla/ejecutarla.
   // [NOTA]: no necesitar retornar nada.
   // Tu código:
-  //! No se como se hace
-  objeto[metodo];
+  objeto[metodo]();
 }
 
 function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
@@ -68,7 +67,8 @@ function tieneEmail(objetoUsuario) {
   // Verifica si el "objetoUsuario", en su propiedad "email", posee un valor definido.
   // En ese caso retornar true. Caso contrario, false.
   // Tu código:
-  if (objetoUsuario.email != undefined) {
+  // if (objetoUsuario.email != undefined && objetoUsuario.email != null) { //!Esto es lo mismo que poner lo de abajo
+  if (objetoUsuario.email) {
     return (true)
   } else {
     return (false)
@@ -153,11 +153,13 @@ function agregarMetodoCalculoDescuento(objetoProducto) {
   // Precio final ---> 8
   // Tu código:
   //! Lo cheque con console log en pruebas y funcionó, no se que pueda ser
+  //? SE TENIA QUE RETORNAR EL OBJETO COMPLETO NO SOLO EL RESULTADO FINAL
   objetoProducto.calcularPrecioDescuento = function () {
-    return (this.precio - (this.precio * this.porcentajeDeDescuento))
+    objetoProducto['Precio Final'] = (objetoProducto.precio - (objetoProducto.precio * objetoProducto.porcentajeDeDescuento))
+    return objetoProducto['Precio Final']
   }
 
-  objetoProducto.calcularPrecioDescuento()
+  return (objetoProducto)
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
